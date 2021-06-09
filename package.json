@@ -1,7 +1,7 @@
 {
   "name": "fundamentos",
   "version": "1.0.0",
-  "description": "",
+  "description": "CRUD con node + mongo",
   "main": "app.js",
   "scripts": {
     "start": "node app",

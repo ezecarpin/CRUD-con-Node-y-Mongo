@@ -1,0 +1,50 @@
+<%- include('template/cabecera', {tituloweb: 'Pedidos'}) %>
+
+    <div class="container">
+
+      <h1 class="text-center">ENAMORARTE 3D</h1>
+
+      <a 
+          href="./pedidos/crear"
+          class="btn btn-success d-grid my-4"
+      >
+          Agregar un pedido nuevo
+      </a>
+
+        <table class="table">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">Cliente</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Fecha de entrega</th>
+                <th scope="col">Seña</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+            <% if (arrayPedidos.length > 0) { %>
+                <% arrayPedidos.forEach(pedido => { %>
+                    <tr class="text-center">
+                        <td><%= pedido.cliente %> </td>
+                        <td><%= pedido.producto %></td>
+                        <td><%= pedido.precio %></td>
+                        <td><%= pedido.fecha %></td>
+                        <td><%= pedido.seña %></td>
+                        <td>
+                          <a 
+                            href="pedidos/<%= pedido.id %>"
+                            class="btn btn-warning btn-sm"
+                            >
+                              Editar
+                          </a>
+                          
+                        </td>
+                      </tr>
+                <% }) %>
+            <% } %>
+            </tbody>
+          </table>
+    </div>
+
+<%- include('template/footer') %>

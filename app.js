@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000
 //conexion a base de datos
 const mongoose = require('mongoose')
 
-const uri = `mongodb+srv://eze:${process.env.PASSWORD}@cluster0.z9vwg.mongodb.net/veterinaria?retryWrites=true&w=majority`
+const uri = `mongodb+srv://enamorarte:O7IsbkYFUX19snBb@cluster0.z9vwg.mongodb.net/enamorarte?retryWrites=true&w=majority`
 
 mongoose.connect(uri, 
     {useNewUrlParser: true, useUnifiedTopology: true})
@@ -33,7 +33,7 @@ app.use(express.static(__dirname + "/public"))
 
 //Rutas web
 app.use('/', require('./router/RutasWeb'))
-app.use('/mascotas', require('./router/Mascotas'))
+app.use('/pedidos', require('./router/Pedidos'))
 
 app.use((req, res, next) => {
     res.status(404).render("404", {

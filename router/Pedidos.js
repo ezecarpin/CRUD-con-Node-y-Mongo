@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const Mascota = require('../models/mascota')
+const Pedido = require('../models/pedido')
 
 router.get('/', async (req, res) => {
     try {
-        const arrayMascotas = await Mascota.find();
-        console.log(arrayMascotas)
-        res.render("mascotas", {
-            arrayMascotas
+        const arrayPedidos = await Pedido.find();
+        console.log(arrayPedidos)
+        res.render("pedidos", {
+            arrayPedidos
         })
     } catch (error) {
         console.log(error)
@@ -22,12 +22,10 @@ router.get('/crear', (req, res) => {
 router.post('/', async (req, res) => {
     const body = req.body
     try {
-        const mascotaDB = new Mascota(body)
-        await mascotaDB.save()
+        const pedidoDB = new Pedido(body)
+        await pedidoDB.save()
 
-        //await Mascota.create(body) tambien sirve
-
-        res.redirect('/mascotas')
+        res.redirect('/pedidos')
 
     } catch(error) {
         console.log(error)
@@ -37,15 +35,15 @@ router.post('/', async (req, res) => {
 router.get('/:id', async(req, res) => {
     const id = req.params.id
     try {
-        const mascotaDB = await Mascota.findOne({_id: id})
+        const pedidoDB = await Pedido.findOne({_id: id})
         res.render('detalle', {
-            mascota: mascotaDB,
+            pedido: pedidoDB,
             error: false
         })
     } catch (error) {
         res.render('detalle', {
             error: true,
-            mensaje: "No se encontra la mascota"
+            mensaje: "No se encontra el pedido"
         })
     }
 })
@@ -54,9 +52,9 @@ router.delete('/:id', async(req, res) => {
     const id = req.params.id
     
     try {
-        const mascotaDB = await Mascota.findByIdAndDelete({_id:id})
+        const pedidoDB = await Pedido.findByIdAndDelete({_id:id})
 
-        if (!mascotaDB) {
+        if (!pedidoDB) {
             res.json({
                 estado: false,
                 mensaje: 'No se puede eliminar'
@@ -64,7 +62,7 @@ router.delete('/:id', async(req, res) => {
         } else {
             res.json({
                 estado: true,
-                mensaje: 'Mascota eliminada'
+                mensaje: 'Pedido eliminado'
             })
         }
     } catch (error) {
@@ -77,13 +75,13 @@ router.put('/:id', async (req, res) => {
     const body = req.body
 
     try {
-        const mascotaDB = await Mascota.findOneAndUpdate(
+        const pedidoDB = await Mascota.findOneAndUpdate(
             id, body, { useFindAndModify: false } 
         )
 
         res.json({
             estado: true,
-            mensaje: 'Mascota editada'
+            mensaje: 'Pedido editada'
         })
 
 
@@ -91,9 +89,9 @@ router.put('/:id', async (req, res) => {
         console.log(error)
         res.json({
             estado: false,
-            mensaje: 'Error al editar mascota'
+            mensaje: 'Error al editar el pedido'
         })
     }
 })
 
-module.exports = router;
+module.exports = router

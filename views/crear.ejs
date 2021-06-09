@@ -2,22 +2,43 @@
 
 <div class="container">
 
-    <h1>Crear nueva mascota</h1>
+    <h1 class="text-center">Agregar pedido nuevo</h1>
     
-    <form action="/mascotas" class="my-2" method="POST">
+    <form action="/pedidos" class="my-2" method="POST">
     
         <input 
             type="text"
-            placeholder="Ingrese Nombre"
+            placeholder="Ingrese nombre cliente"
             class="form-control my-2"
-            name="nombre"
+            name="cliente"
         >
     
         <input 
             type="text"
-            placeholder="Ingrese Descripción"
+            placeholder="Ingrese producto"
             class="form-control my-2"
-            name="descripcion"
+            name="producto"
+        >
+
+        <input 
+            type="text"
+            placeholder="Precio"
+            class="form-control my-2"
+            name="precio"
+        >
+
+        <input 
+            type="text"
+            placeholder="Fecha entrega"
+            class="form-control my-2"
+            name="fecha"
+        >
+
+        <input 
+            type="text"
+            placeholder="seña"
+            class="form-control my-2"
+            name="seña"
         >
     
         <button
