@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 
 require('dotenv').config()
 
-const port = process.env.HEROKU_DB_HOST || 3000
+const port = process.env.PORT || 3000
 
 //conexion a base de datos
 const mongoose = require('mongoose')
